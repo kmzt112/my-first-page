@@ -39,7 +39,20 @@ html<!DOCTYPE html>
       for (let i = 0; i < items.length; i++) {
         let li = document.createElement("li");
         li.textContent = items[i];
+
+
+        //削除ボタン
+        let btn = document.createElement("button");
+        btn.textContent = "delete";
+        btn.onclick = function(){
+          items.splice(i,1);//配列からi番目を1個削除
+          showList();
+        };
+
+        li.appendChild(btn);//liの中にボタンを追加
         listEl.appendChild(li);
+   
+          
       }
     }
   </script>
