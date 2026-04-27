@@ -2,16 +2,23 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>はじめてのページ</title>
+  <title>実験JavaScript</title>
 </head>
 <body>
-  <h1>こんにちは！</h1>
-  <button onclick="greet()">押してみて</button>
+  <h1>こんにちは</h1>
+  <input id="nameInput" type="text" placeholder="名前を入力：">
+  <button onclick="greet()">挨拶ボタン</button>
   <p id="message"></p>
 
   <script>
     function greet() {
-      document.getElementById("message").textContent = "JavaScriptが動いてるよ！🎉";
+      let name = document.getElementById("nameInput").value;
+
+      if (name ===""){
+        document.getElementById("message").textContent = "名前を入力：";
+      }else{
+        document.getElementById("message").textContent = "こんにちは、"+name +"さん";
+      }
     }
   </script>
 </body>
