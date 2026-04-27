@@ -1,25 +1,80 @@
 <!DOCTYPE html>
+
 <html lang="ja">
+<!-- ページ全体を囲むタグ。lang="ja"は日本語サイトという意味 -->
+
 <head>
+<!-- ページの設定を書くエリア（画面には表示されない） -->
+
   <meta charset="UTF-8">
-  <title>実験JavaScript</title>
+  <!-- 日本語を正しく表示するための文字コード設定 -->
+
+  <title>買い物リスト練習</title>
+  <!-- ブラウザのタブに表示されるタイトル -->
+
 </head>
+
 <body>
-  <h1>こんにちは</h1>
-  <input id="nameInput" type="text" placeholder="名前を入力：">
+<!-- 画面に表示される内容を書くエリア -->
+
+  <h1>The shoplist</h1>
+  <!-- 見出し-->
+
+  <input id="itemInput" type="text" placeholder="アイテムをを入力：">
+  <!-- テキスト入力欄。id="nameInput"でJSから操作できる -->
+
   <button onclick="greet()">挨拶ボタン</button>
+  <!-- ボタン。クリックするとgreet()関数を呼び出す -->
+
   <p id="message"></p>
+  <!-- メッセージ表示エリア。最初は空っぽ -->
 
   <script>
-    function greet() {
-      let name = document.getElementById("nameInput").value;
+  <!-- ここからJavaScript -->
 
-      if (name ===""){
-        document.getElementById("message").textContent = "名前を入力：";
-      }else{
-        document.getElementById("message").textContent = "こんにちは、"+name +"さん";
+    function addItem() {
+    <!-- addItem関数。ボタンを押すと実行される -->
+
+      let item = document.getElementById("itemInput").value;
+      <!-- 入力欄から入力された文字を取得して変数nameに入れる -->
+ 
+      if (item ==="") return;
+    　//もしitemが空っぽなら何もしない
+
+    items.push(item);
+    //配列にアイテムを追加
+
+    document.getElementById("itemInput").value = "";
+    //リスト画面を空にする
+
+    showList();
+    //リストを画面に表示
+    }
+
+    function showList(){
+      let listEl = document.getElementById(""list);
+      //id="list" の <ul> タグを取得して listEl に入れる
+      listEl.interTHML = "";
+      //リストに追加するたびにリセット(追加したら空にする)
+      
+
+      //ループで配置の中身を全部表示
+      for (let i = 0; i< items.length; i++){
+        //items配列の数だけ繰り返す
+        let li = document.createElement("li");
+        //<li> タグを新しく作る
+        li.textContent = items[i];
+        //作った<li>に配列のi番目のテキストを入れる
+        listEl.appendChild(li);
+        //作った<li>を<ul>の中に追加する
       }
     }
+
   </script>
+  <!-- JavaScriptここまで -->
+
 </body>
+<!-- bodyここまで -->
+
 </html>
+<!-- htmlここまで -->
