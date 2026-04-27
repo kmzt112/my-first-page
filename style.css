@@ -1,0 +1,70 @@
+/* 全体のスタイル */
+body {
+  font-family: sans-serif;
+  background-color: #f0f4f8;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+/* カード */
+.container {
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  width: 400px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* タイトル */
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+/* 入力エリア */
+.input-area {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+/* 入力欄 */
+input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* ボタン */
+button {
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #357abd;
+}
+
+/* リスト */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* リストの各アイテム */
+li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}

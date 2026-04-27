@@ -1,61 +1,84 @@
-html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>買い物リスト</title>
+  <title>ToDo-List</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>買い物リスト</h1>
-  <input id="itemInput" type="text" placeholder="アイテムを入力">
-  <button onclick="addItem()">追加</button>
-  <ol id="list"></ol>
-  //<ol>タグは数字付きのリスト、<ul>タグは・付きのリスト
+  <h1>Today’s my tasks are...</h1>
+  <div class = "container">
+    <h1>ToDoリスト</h1>
+    <div class="input-area">
+      <input id = "todoInput" type="text" placeholder="タスクを入力">
+      <button onclick=" addTodo()">追加</button>
+    </div>
+    <ul id = "list"></ul>
+  </div>
 
   <script>
-    // 配列：リストのデータを入れる箱
-    let items = [];
+    let tasks = [];
 
-    function addItem() {
+
+    function addTodo() {
       // 入力欄から文字を取得
-      let item = document.getElementById("itemInput").value;
+      let text = document.getElementById("todoInput").value;
 
       // 空っぽなら何もしない
-      if (item === "") return;
+      if (text === "") return;
 
       // 配列にアイテムを追加
-      items.push(item);
+      tasks.push({text: text,done:false});
 
       // 入力欄を空にする
-      document.getElementById("itemInput").value = "";
+      document.getElementById("todoInput").value = "";
 
       // リストを画面に表示
       showList();
     }
 
-    function showList() {
-      let listEl = document.getElementById("list");
-      listEl.innerHTML = "";
-
-      // ループで配列の中身を全部表示
-      for (let i = 0; i < items.length; i++) {
-        let li = document.createElement("li");
-        li.textContent = items[i];
-
-
-        //削除ボタン
-        let btn = document.createElement("button");
-        btn.textContent = "delete";
-        btn.onclick = function(){
-          items.splice(i,1);//配列からi番目を1個削除
-          showList();
-        };
-
-        li.appendChild(btn);//liの中にボタンを追加
-        listEl.appendChild(li);
-   
-          
-      }
+      function toggleDone(i) {
+      todos[i].done = !todos[i].done;
+      showList();
     }
+function toggleDone(i) {
+  tasks[i].done = !tasks[i].done;
+  showList();
+}
+
+function deleteTodo(i) {
+  tasks.splice(i, 1);
+  showList();
+}
+
+function showList() {
+  let listEl = document.getElementById("list");
+  listEl.innerHTML = "";
+
+  for (let i = 0; i < tasks.length; i++) {
+    let li = document.createElement("li");
+    li.textContent = tasks[i].text;
+
+    if (tasks[i].done) {
+      li.style.textDecoration = "line-through";
+      li.style.color = "gray";
+    }
+
+    let doneBtn = document.createElement("button");
+    doneBtn.textContent = "完了";
+    doneBtn.onclick = function() { toggleDone(i); };
+
+    let delBtn = document.createElement("button");
+    delBtn.textContent = "削除";
+    delBtn.onclick = function() { deleteTodo(i); };
+
+    li.appendChild(doneBtn);
+    li.appendChild(delBtn);
+    listEl.appendChild(li);
+  }
+}
+
+   
   </script>
 </body>
 </html>
