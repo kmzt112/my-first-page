@@ -4,81 +4,21 @@
   <meta charset="UTF-8">
   <title>ToDo-List</title>
   <link rel="stylesheet" href="style.css">
+  <script src="script.js"></script>
 </head>
 <body>
-  <h1>Today’s my tasks are...</h1>
-  <div class = "container">
-    <h1>ToDoリスト</h1>
+  <h1>Today's my tasks are...</h1><br>
+  <div class="runner">🏃</div>
+
+  <div class="container">
     <div class="input-area">
-      <input id = "todoInput" type="text" placeholder="タスクを入力">
-      <button onclick=" addTodo()">追加</button>
+      <input id="todoInput" type="text" placeholder="タスクを入力">
+
+      <button onclick="addTodo()">追加</button>
+      
     </div>
-    <ul id = "list"></ul>
+    <ul id="list"></ul>
   </div>
 
-  <script>
-    let tasks = [];
-
-
-    function addTodo() {
-      // 入力欄から文字を取得
-      let text = document.getElementById("todoInput").value;
-
-      // 空っぽなら何もしない
-      if (text === "") return;
-
-      // 配列にアイテムを追加
-      tasks.push({text: text,done:false});
-
-      // 入力欄を空にする
-      document.getElementById("todoInput").value = "";
-
-      // リストを画面に表示
-      showList();
-    }
-
-      function toggleDone(i) {
-      todos[i].done = !todos[i].done;
-      showList();
-    }
-function toggleDone(i) {
-  tasks[i].done = !tasks[i].done;
-  showList();
-}
-
-function deleteTodo(i) {
-  tasks.splice(i, 1);
-  showList();
-}
-
-function showList() {
-  let listEl = document.getElementById("list");
-  listEl.innerHTML = "";
-
-  for (let i = 0; i < tasks.length; i++) {
-    let li = document.createElement("li");
-    li.textContent = tasks[i].text;
-
-    if (tasks[i].done) {
-      li.style.textDecoration = "line-through";
-      li.style.color = "gray";
-    }
-
-    let doneBtn = document.createElement("button");
-    doneBtn.textContent = "完了";
-    doneBtn.onclick = function() { toggleDone(i); };
-
-    let delBtn = document.createElement("button");
-    delBtn.textContent = "削除";
-    delBtn.onclick = function() { deleteTodo(i); };
-
-    li.appendChild(doneBtn);
-    li.appendChild(delBtn);
-    listEl.appendChild(li);
-  }
-}
-
-   
-  </script>
-</body>
+  </body>
 </html>

@@ -3,7 +3,8 @@ body {
   font-family: sans-serif;
   background-color: #f0f4f8;
   display: flex;
-  justify-content: center;
+  flex-direction: column;  /* ← これを追加！縦並びになる */
+  align-items: center;
   padding: 40px;
 }
 
@@ -67,4 +68,22 @@ li {
   padding: 10px;
   border-bottom: 1px solid #eee;
   font-size: 14px;
+}
+/* 走る人のキャラクター */
+.runner {
+  font-size: 50px;
+  display: block;
+  margin-bottom: 20px;  /* 下に余白 */
+  animation: run 2s linear infinite;
+
+}
+
+/* 横に走るアニメーション */
+@keyframes run {
+  0% {
+    transform: translateX(300px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
 }
